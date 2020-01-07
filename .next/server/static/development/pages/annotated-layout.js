@@ -158,7 +158,8 @@ class AnnotatedLayout extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
     super(...args);
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "state", {
-      discount: '10%'
+      discount: '10%',
+      enabled: false
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "handleSubmit", () => {
@@ -173,12 +174,25 @@ class AnnotatedLayout extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
         [field]: value
       });
     });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "handleToggle", () => {
+      this.setState(({
+        enabled
+      }) => {
+        return {
+          enabled: !enabled
+        };
+      });
+    });
   }
 
   render() {
     const {
-      discount
+      discount,
+      enabled
     } = this.state;
+    const contentStatus = enabled ? 'Disable' : 'Enable';
+    const textStatus = enabled ? 'enabled' : 'disabled';
     return __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Page"], null, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Layout"], null, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Layout"].AnnotatedSection, {
       title: "Default discount",
       description: "Add a product to Sample App, it will automatically be discounted."
@@ -196,7 +210,18 @@ class AnnotatedLayout extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
     }, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       primary: true,
       submit: true
-    }, "Save"))))))));
+    }, "Save")))))), __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Layout"].AnnotatedSection, {
+      title: "Price updates",
+      description: "Temporarily disable all Sample App price updates"
+    }, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["SettingToggle"], {
+      action: {
+        content: contentStatus,
+        onAction: this.handleToggle
+      },
+      enabled: enabled
+    }, "This setting is", ' ', __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["TextStyle"], {
+      variation: "strong"
+    }, textStatus), "."))));
   }
 
 }

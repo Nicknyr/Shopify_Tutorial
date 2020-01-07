@@ -45524,7 +45524,8 @@ function (_React$Component) {
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(AnnotatedLayout)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
-      discount: '10%'
+      discount: '10%',
+      enabled: false
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleSubmit", function () {
@@ -45541,13 +45542,26 @@ function (_React$Component) {
       };
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleToggle", function () {
+      _this.setState(function (_ref) {
+        var enabled = _ref.enabled;
+        return {
+          enabled: !enabled
+        };
+      });
+    });
+
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AnnotatedLayout, [{
     key: "render",
     value: function render() {
-      var discount = this.state.discount;
+      var _this$state = this.state,
+          discount = _this$state.discount,
+          enabled = _this$state.enabled;
+      var contentStatus = enabled ? 'Disable' : 'Enable';
+      var textStatus = enabled ? 'enabled' : 'disabled';
       return __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_8__["Page"], null, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_8__["Layout"], null, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_8__["Layout"].AnnotatedSection, {
         title: "Default discount",
         description: "Add a product to Sample App, it will automatically be discounted."
@@ -45565,7 +45579,18 @@ function (_React$Component) {
       }, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_8__["Button"], {
         primary: true,
         submit: true
-      }, "Save"))))))));
+      }, "Save")))))), __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_8__["Layout"].AnnotatedSection, {
+        title: "Price updates",
+        description: "Temporarily disable all Sample App price updates"
+      }, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_8__["SettingToggle"], {
+        action: {
+          content: contentStatus,
+          onAction: this.handleToggle
+        },
+        enabled: enabled
+      }, "This setting is", ' ', __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_8__["TextStyle"], {
+        variation: "strong"
+      }, textStatus), "."))));
     }
   }]);
 
@@ -45576,7 +45601,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!***************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fannotated-layout&absolutePagePath=%2FUsers%2Fnick%2FDocuments%2FProjects%2Fshopify%2Fpages%2Fannotated-layout.js ***!
   \***************************************************************************************************************************************************************/
@@ -45599,5 +45624,5 @@ module.exports = dll_5f137288facb1107b491;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=annotated-layout.js.map
